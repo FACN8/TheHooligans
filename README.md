@@ -2,7 +2,7 @@
 
 Search and book hostels all over the country with this easy application.
 
-#Testing:
+# Testing:
 If you want to run the tests you need to set up a testing database.
 Requirements:(Available also as devdependencies in package.json)
 have the following node packages installed:
