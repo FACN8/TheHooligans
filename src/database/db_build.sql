@@ -64,8 +64,7 @@ VALUES
     'Hostel by the water',
     '+972-54938293',
     1
-  )
-  ;
+  );
 
 INSERT INTO
   city (name)
