@@ -20,10 +20,11 @@ const serverError = (err, response) => {
   };
 
   const publicHandler = (url, response) => {
-    const filepath = path.join(__dirname, "..", url);
+    const filepath = path.join(__dirname,"..", url);
+    console.log(filepath);
     readFile(filepath, (err, file) => {
       if (err) return serverError(err, response);
-      const [, extension] = url.split(".");
+      const extension = url.split(".")[1];
       const extensionType = {
         html: "text/html",
         css: "text/css",

@@ -1,5 +1,7 @@
 const {
-    homeHandler
+    homeHandler,
+    publicHandler,
+    errorHandler
   } = require('./handlers');
   
   const router = (request, response) => {
