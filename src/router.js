@@ -13,7 +13,6 @@ const {
     } else if (url.includes('public')) {
       publicHandler(url, response);
     } else if (url.includes('search')) {
-      console.log(url);
       hostelHandler(url, response);
     }
     else {
