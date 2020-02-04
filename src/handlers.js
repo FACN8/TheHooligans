@@ -18,6 +18,9 @@ const serverError = (err, response) => {
       response.end(file);
     });
   };
+  
+
+
 
   const publicHandler = (url, response) => {
     const filepath = path.join(__dirname,"..", url);
