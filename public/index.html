@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="public/style.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
     <title>TheHooligans</title>
 </head>
+
 <body>
-    <div class="wrapper">
-        <form class="form" action="/getHostels" method="get">
-            <input type="text" name="city" value="" placeholder="City">
-            <input type="text" name="DOA" value="" placeholder="Date of arrival">
-            <input type="text" name="DOD" value="" placeholder="Date of departure">
-            <button type="submit" name="button">Search for hostels</button>
-        </form> 
+    <header>
+        <h1>Lets Find Your Next Adventure</h1>
+    </header>
+    <div class="main-container">
+        <h1 aria-hidden="true" style="display: none;">Search for Hostel</h1>
+
+        <div class="wrapper">
+            <form class="form" action="/getHostels" method="get">
+                <input type="text" name="city" value="" placeholder="City">
+                <input type="text" name="DOA" value="" placeholder="Date of arrival">
+                <input type="text" name="DOD" value="" placeholder="Date of departure">
+                <button type="submit" name="button">Search for hostels</button>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>
