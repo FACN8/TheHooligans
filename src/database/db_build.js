@@ -8,6 +8,6 @@ const initQuery = fs.readFileSync(`${__dirname}/db_build.sql`).toString();
 //     console.log(("users table created with result : ", result));
 // })
 
-const runDbBuild = cb => dbConnection.query(sql, cb);
+const runDbBuild = cb => dbConnection.query(initQuery, cb);
 
 module.exports = runDbBuild;
