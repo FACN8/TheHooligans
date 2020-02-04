@@ -4,7 +4,8 @@
   "description": "Search and book hostels all over the country with this easy application.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js"
   },
   "repository": {
     "type": "git",
