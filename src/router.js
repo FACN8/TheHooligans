@@ -11,6 +11,8 @@ const {
       homeHandler(response);
     } else if (url.includes('public')) {
       publicHandler(url, response);
+    } else if (url===('/getHostels')) {
+      hostelHandler(url, response);
     }
     else {
       errorHandler(response);
