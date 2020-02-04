@@ -12,14 +12,14 @@ have the following node packages installed:
 -jest
 
 1. Create testing db.
-   -In your terminal start psql or pgcli.
+   - In your terminal start psql or pgcli.
 
 In terminal,Enter the following:
--CREATE DATABASE testhosteldb;
+- CREATE DATABASE testhosteldb;
 You can create a user or skip and use existing user.
--CREATE USER [user_name] WITH SUPERUSER PASSWORD ['password'];
+- CREATE USER [user_name] WITH SUPERUSER PASSWORD ['password'];
 
--ALTER DATABASE testhosteldb OWNER TO [user_name];
+- ALTER DATABASE testhosteldb OWNER TO [user_name];
 
 2. In your .env file add this :
    TEST_DB_URL = postgres://[user_name]:[password]@localhost:5432/[db_name]
