@@ -43,9 +43,10 @@ const serverError = (err, response) => {
         html: "text/html",
         css: "text/css",
         js: "application/javascript",
+        jpg: "image/jpeg",
         ico: "image/x-icon"
       };
-      response.writeHead(200, { "content-type": extensionType[extension] });
+      response.writeHead(200, { "Content-Type": extensionType[extension] });
       response.end(file);
     });
   };
