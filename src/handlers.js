@@ -1,5 +1,6 @@
 const { readFile } = require("fs");
 const path = require("path");
+const urlMod = require('url')
 const getData = require("./queries/getData.js");
 const dbConnection = require('./database/db_connection')
 const querystring = require('querystring')
@@ -19,12 +20,22 @@ const serverError = (err, response) => {
     });
   };
   
-
+  const hostelHandler = (url, response) => {
+    const queries = querystring.parse(urlMod.parse(url).query);
+    dbConnection.query('SELECT * FROM hostel WHERE city_id IN (SELECT id FROM city WHERE name=$1)',[queries.city], (error,result)=>{
+      if(error){
+        response.writeHead(503, {"Content-Type": "text/plain"});
+        response.end('Server failed to load the hostels for that city. eemchem ha sleha')
+      }
+      response.writeHead(200, {"Content-Type": "applicaton/json"});
+      response.end(JSON.stringify(result.rows));
+    })
+    
+  };
 
 
   const publicHandler = (url, response) => {
     const filepath = path.join(__dirname,"..", url);
-    console.log(filepath);
     readFile(filepath, (err, file) => {
       if (err) return serverError(err, response);
       const extension = url.split(".")[1];
@@ -48,5 +59,6 @@ const serverError = (err, response) => {
     homeHandler,
     publicHandler,
     errorHandler,
+    hostelHandler
   };
   
