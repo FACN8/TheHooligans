@@ -22,5 +22,5 @@ You can create a user or skip and use existing user.
 - ALTER DATABASE testhosteldb OWNER TO [user_name];
 
 2. In your .env file add this :
-   TEST_DB_URL = postgres://[user_name]:[password]@localhost:5432/[db_name]
+   `TEST_DB_URL = postgres://[user_name]:[password]@localhost:5432/[db_name]`
    replace the [] entries with the ones you setup.
