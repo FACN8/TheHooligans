@@ -59,41 +59,50 @@ insert into guest (id, name, hostel_id, phoneNumber) values (10, 'Renie', 10, '+
 
 create table reservation (
 	id INT,
-	guest_id INT,
+	city_id INT,
 	hostel_id INT,
-	date_of_arrival VARCHAR(50)
+	Day1 VARCHAR(50),
+	Day2 VARCHAR(50),
+	Day3 VARCHAR(50),
+	Day4 VARCHAR(50),
+	Day5 VARCHAR(50),
+	Day6  VARCHAR(50),
+	Day7  VARCHAR(50),
+	Day8 VARCHAR(50),
+	Day9 VARCHAR(50),
+	Day10 VARCHAR(50),
+	Day11 VARCHAR(50),
+	Day12 VARCHAR(50),
+	Day13 VARCHAR(50),
+	Day14 VARCHAR(50),
+	Day15 VARCHAR(50),
+	Day16 VARCHAR(50),
+	Day17 VARCHAR(50),
+	Day18 VARCHAR(50),
+	Day19 VARCHAR(50),
+	Day20 VARCHAR(50),
+	Day21 VARCHAR(50),
+	Day22 VARCHAR(50),
+	Day23 VARCHAR(50),
+	Day24 VARCHAR(50),
+	Day25 VARCHAR(50),
+	Day26 VARCHAR(50),
+	Day27 VARCHAR(50),
+	Day28 VARCHAR(50),
+	Day29 VARCHAR(50),
+	Day30 VARCHAR(50)
 );
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (1, 1, 1, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (2, 2, 2, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (3, 3, 3, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (4, 4, 4, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (5, 5, 5, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (6, 6, 6, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (7, 7, 7, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (8, 8, 8, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (9, 9, 9, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (10, 10, 10, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (11, 1, 1, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (12, 2, 2, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (13, 3, 3, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (14, 4, 4, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (15, 5, 5, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (16, 6, 6, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (17, 7, 7, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (18, 8, 8, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (19, 9, 9, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (20, 10, 10, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (21, 1, 1, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (22, 2, 2, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (23, 3, 3, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (24, 4, 4, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (25, 5, 5, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (26, 6, 6, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (27, 7, 7, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (28, 8, 8, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (29, 9, 9, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (30, 10, 10, true);
 
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (1, 1, 1, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (2, 2, 2, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (3, 3, 3, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (4, 4, 4, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (5, 5, 5, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (6, 6, 6, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (7, 7, 7, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (8, 8, 8, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (9, 9, 9, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+insert into reservation (id, city_id, hostel_id, Day1, Day2, Day3, Day4, Day5, Day6 , Day7 , Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24, Day25, Day26, Day27, Day28, Day29, Day30) values (10, 10, 10, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
 
 
 COMMIT;
