@@ -28,12 +28,16 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
+    width: 97vw;
+    height: auto;
 }
 
 .main-container {
     padding: 10px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    width: 98%;
+    height: auto;
 }
 
 .wrapper {
@@ -43,20 +47,19 @@ body {
 
 .hostel-name {
     font-size: 1.5rem;
+    margin: 8px;
 }
 
-.hostel-listing::before {
-    padding: 10px;
-    background-color: #ccc;
-    opacity: 50%;
-}
 
 li {
     list-style-type: none;
     background-color: rgba(218, 38, 98, 0.39);
     color: rgb(107, 7, 7);
     border-radius: 5px;
-    margin: 7px;
+    margin: 3px;
+    padding: 3px;
+    grid-column-start: 2;
+    grid-column-end: 4;
 }
 
 form {
@@ -114,17 +117,19 @@ input[type=date] {
 }
 
 button {
-    width: 15vw;
+    
     background-color: rgba(190, 28, 55, 0.877);
     color: white;
-    padding: 2vh;
-    margin: 1vw;
+    padding: 7px;
+    margin: 5px;
     border: none;
     cursor: pointer;
     font-size: large;
     font-weight: 700;
     border-radius: 26px;
-    justify-content: center;
+    /* justify-content: center; */
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
 button:hover {
@@ -156,5 +161,7 @@ span {
     /* background-color: rgba(218, 38, 98, 0.39); */
     color: rgb(107, 7, 7);
     border-radius: 5px;
-    margin: 7px;
+    padding: 7px;
+    grid-column-start: 2;
+    grid-column-end: 4;
 }

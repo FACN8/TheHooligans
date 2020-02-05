@@ -18,6 +18,9 @@ const {
     }else if (url.includes('reserverHostel')) {
       reserverHostelHandler(request, response);
     }
+    else if (url.includes('reserve')) {
+      reserveHandler(url, response);
+    }
     else {
       errorHandler(response);
     }
