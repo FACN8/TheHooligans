@@ -36,18 +36,18 @@ const homeHandler = response => {
 const hostelHandler = (url, response) => {
     const queries = querystring.parse(urlMod.parse(url).query);
     let cityNameInsensitive = queries.city.substring(0, 1).toUpperCase() +queries.city.substring(1, queries.city.length).toLowerCase()
-    let arrivalInputDate = parseInt((queries.arrival.split('-'))[1]);
-    let departureInputDate = parseInt((queries.departure.split('-'))[1]);
+    let arrivalInputDate = parseInt((queries.arrival.split('-'))[2]);
+    let departureInputDate = parseInt((queries.departure.split('-'))[2]);
     let dayToString = 'day'+arrivalInputDate;
+    console.log('arrival date:',queries.arrival.split('-'));
     let rangeQuery = `SELECT * FROM hostel 
     INNER JOIN reservation ON reservation.hostel_id = hostel.id 
     WHERE hostel.city_id IN (SELECT id FROM city WHERE name = $1)
-    and reservation.${dayToString} = 'false'`
+    and reservation.${dayToString} = FALSE`
     for(var i=arrivalInputDate+1; i <= departureInputDate; i++){
         let dayToString = 'day'+i;
-        rangeQuery += ` AND reservation.${dayToString} = 'false'`
+        rangeQuery += ` AND reservation.${dayToString} = FALSE`
     }
-    console.log(rangeQuery);
     dbConnection.query(rangeQuery,[cityNameInsensitive], (error, result) => {
     if (error) {
         console.log(error)
@@ -56,6 +56,10 @@ const hostelHandler = (url, response) => {
     }
     console.log('resulttttttt ',JSON.stringify(result.rows));
     response.writeHead(200, extension.json);
+    if(result===undefined || result==='' || result.length === 0){
+        console.log('Result is empty, returning empty arr');
+        response.end([]);
+    }
     response.end(JSON.stringify(result.rows));
     })
 
@@ -69,8 +73,8 @@ const reserverHostelHandler = (request, response) => {
         });
         request.on('end', function () {
         allTheData = JSON.parse(allTheData);
-        let arrivalInputDate = parseInt((allTheData.dayOfArrival.split('-'))[1]);
-        let departureInputDate = parseInt((allTheData.dayOfDeparture.split('-'))[1]);
+        let arrivalInputDate = parseInt((allTheData.dayOfArrival.split('-'))[2]);
+        let departureInputDate = parseInt((allTheData.dayOfDeparture.split('-'))[2]);
         for(var i=arrivalInputDate; i <= departureInputDate; i++){
             let dayToString = 'day'+i;
             const sqlQuery = pgFormat('UPDATE reservation SET %I = TRUE WHERE hostel_id=$1', dayToString)

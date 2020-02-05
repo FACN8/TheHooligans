@@ -31,6 +31,17 @@ function displayData(inputData) {
   while (hostelsList.firstChild) {
     hostelsList.removeChild(hostelsList.firstChild);
   }
+  console.log('Function displayData ,inputData = ',inputData);
+  if(inputData === undefined || inputData.length===0){
+    var noDataLi = document.createElement("li");
+    noDataLi.className = "wrapper hostel-listing";
+    var noDataHeader = document.createElement("h2");
+    noDataHeader.className = "hostel-name";
+    noDataHeader.innerText = 'Sorry! no hostels are available, try a different date';
+    noDataLi.appendChild(noDataHeader);
+    hostelsList.appendChild(noDataLi);
+  }else 
+  {
   inputData.forEach(hostel => {
     var newLi = document.createElement("li");
     var newHeader = document.createElement("h2");
@@ -50,6 +61,7 @@ function displayData(inputData) {
     newLi.appendChild(newButton)
     hostelsList.appendChild(newLi);
   });
+}
 }
 
 document.addEventListener("submit", e => {
