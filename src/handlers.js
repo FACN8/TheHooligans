@@ -36,17 +36,31 @@ const homeHandler = response => {
 const hostelHandler = (url, response) => {
     const queries = querystring.parse(urlMod.parse(url).query);
     let cityNameInsensitive = queries.city.substring(0, 1).toUpperCase() +queries.city.substring(1, queries.city.length).toLowerCase()
-    dbConnection.query('SELECT * FROM hostel WHERE city_id IN (SELECT id FROM city WHERE name=$1)',[cityNameInsensitive] , (error, result) => {
-        if (error) {
-            response.writeHead(503, extension.text);
-            response.end('Server failed to load the hostels for that city. eemchem ha sleha')
-        }
-        response.writeHead(200, extension.json);
-        response.end(JSON.stringify(result.rows));
+    let arrivalInputDate = parseInt((queries.arrival.split('-'))[1]);
+    let departureInputDate = parseInt((queries.departure.split('-'))[1]);
+    let dayToString = 'day'+arrivalInputDate;
+    let rangeQuery = `SELECT * FROM hostel 
+    INNER JOIN reservation ON reservation.hostel_id = hostel.id 
+    WHERE hostel.city_id IN (SELECT id FROM city WHERE name = $1)
+    and reservation.${dayToString} = 'false'`
+    for(var i=arrivalInputDate+1; i <= departureInputDate; i++){
+        let dayToString = 'day'+i;
+        rangeQuery += ` AND reservation.${dayToString} = 'false'`
+    }
+    console.log(rangeQuery);
+    dbConnection.query(rangeQuery,[cityNameInsensitive], (error, result) => {
+    if (error) {
+        console.log(error)
+        response.writeHead(503, extension.text);
+        return response.end('Server failed to load the hostels for that city. eemchem ha sleha')
+    }
+    console.log('resulttttttt ',JSON.stringify(result.rows));
+    response.writeHead(200, extension.json);
+    response.end(JSON.stringify(result.rows));
     })
 
 };
-
+//Updates the reservation table to reserver hostel according to dates
 const reserverHostelHandler = (request, response) => {
         response.writeHead(301, {"Location": "/"});
         var allTheData = '';
@@ -55,11 +69,13 @@ const reserverHostelHandler = (request, response) => {
         });
         request.on('end', function () {
         allTheData = JSON.parse(allTheData);
-        let arrivalInputDat = parseInt((allTheData.dayOfArrival.split('-'))[1]);
-        let dayToString = 'day'+arrivalInputDat;
-        console.log(dayToString);
-        const sqlQuery = pgFormat('UPDATE reservation SET %I = TRUE WHERE hostel_id=$1', dayToString)
-        dbConnection.query(sqlQuery,[allTheData.hostelID]);
+        let arrivalInputDate = parseInt((allTheData.dayOfArrival.split('-'))[1]);
+        let departureInputDate = parseInt((allTheData.dayOfDeparture.split('-'))[1]);
+        for(var i=arrivalInputDate; i <= departureInputDate; i++){
+            let dayToString = 'day'+i;
+            const sqlQuery = pgFormat('UPDATE reservation SET %I = TRUE WHERE hostel_id=$1', dayToString)
+            dbConnection.query(sqlQuery,[allTheData.hostelID]);
+        }
         response.end();
   });
 };
