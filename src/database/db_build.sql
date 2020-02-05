@@ -64,11 +64,26 @@ VALUES
     'Hostel by the water',
     '+972-54938293',
     1
+  ),
+  (
+    'Fauzi Azar Inn',
+    500,
+    'Hostel in the old city',
+    '+972-56932854',
+    2
+  ),
+  (
+    'Michel House',
+    100,
+    'Hostel by the Basilica of Announciation',
+    '+972-64321985',
+    2
   );
 
 INSERT INTO
   city (name)
 VALUES
-  ('Haifa');
+  ('Haifa'),
+  ('Nazareth');
 
 COMMIT;
