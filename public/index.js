@@ -21,21 +21,37 @@ function updateDom(err, data) {
   } else {
     var inputData = JSON.parse(data);
     console.log(inputData);
-    inputData.forEach(hostel => {
-      const hostelsList = document.querySelector("#hostels-list");
-      var newLi = document.createElement("li");
-      var newHeader = document.createElement("h2");
-      var newDescription = document.createElement("span");
-      newHeader.innerText = hostel.name;
-      newDescription.innerText = hostel.description;
-      newHeader.className = "hostel-name";
-      newDescription.className = "hostel-description";
-      newLi.className = "wrapper hostel-listing";
-      newLi.appendChild(newHeader);
-      newLi.appendChild(newDescription);
-      hostelsList.appendChild(newLi);
-    });
+    displayData(inputData);
+
+    cityName.value="";
+    DOA.value="";
+    DOD.value="";
+
+
+
   }
+}
+
+
+function displayData(inputData){
+    const hostelsList = document.querySelector("#hostels-list");
+
+    while (hostelsList.firstChild) {
+        hostelsList.removeChild(hostelsList.firstChild);
+      }
+    inputData.forEach(hostel => {
+        var newLi = document.createElement("li");
+        var newHeader = document.createElement("h2");
+        var newDescription = document.createElement("span");
+        newHeader.innerText = hostel.name;
+        newDescription.innerText = hostel.description;
+        newHeader.className = "hostel-name";
+        newDescription.className = "hostel-description";
+        newLi.className = "wrapper hostel-listing";
+        newLi.appendChild(newHeader);
+        newLi.appendChild(newDescription);
+        hostelsList.appendChild(newLi);
+      });
 }
 
 document.addEventListener("submit", e => {
