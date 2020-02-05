@@ -5,61 +5,67 @@ const getData = require("./queries/getData.js");
 const dbConnection = require('./database/db_connection')
 const querystring = require('querystring')
 
+const extension = {
+    html: { "Content-Type": "text/html" },
+    css: { "Content-Type": "text/css" },
+    js: { "Content-Type": "application/javascript" },
+    png: { "Content-Type": "image/png" },
+    jpg: { "Content-Type": "image/jpg" },
+    ico: { "Content-Type": "image/x-icon" },
+    json: { "Content-Type": "application/json" },
+    text: { "Content-Type": "text/plain" }
+};
+
 const serverError = (err, response) => {
-    response.writeHead(500, "Content-Type:text/html");
+    response.writeHead(500, extension.html);
     response.end("<h1>Sorry, there was a problem loading the page</h1>");
     console.log(err);
-  };
-  
-  const homeHandler = response => {
+};
+
+
+const homeHandler = response => {
     const filepath = path.join(__dirname, "..", "public", "index.html");
     readFile(filepath, (err, file) => {
-      if (err) return serverError(err, response);
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.end(file);
+        if (err) return serverError(err, response);
+        response.writeHead(200, extension.html);
+        response.end(file);
     });
-  };
-  
-  const hostelHandler = (url, response) => {
+};
+
+const hostelHandler = (url, response) => {
     const queries = querystring.parse(urlMod.parse(url).query);
-    dbConnection.query('SELECT * FROM hostel WHERE city_id IN (SELECT id FROM city WHERE name=$1)',[queries.city], (error,result)=>{
-      if(error){
-        response.writeHead(503, {"Content-Type": "text/plain"});
-        response.end('Server failed to load the hostels for that city. eemchem ha sleha')
-      }
-      response.writeHead(200, {"Content-Type": "applicaton/json"});
-      response.end(JSON.stringify(result.rows));
+    dbConnection.query('SELECT * FROM hostel WHERE city_id IN (SELECT id FROM city WHERE name=$1)', [queries.city], (error, result) => {
+        if (error) {
+            response.writeHead(503, extension.text);
+            response.end('Server failed to load the hostels for that city. eemchem ha sleha')
+        }
+        response.writeHead(200, extension.json);
+        response.end(JSON.stringify(result.rows));
     })
-    
-  };
+
+};
 
 
-  const publicHandler = (url, response) => {
-    const filepath = path.join(__dirname,"..", url);
+const publicHandler = (url, response) => {
+    const filepath = path.join(__dirname, "..", url);
+    const fileExt = url.split('.')[1]
+
     readFile(filepath, (err, file) => {
-      if (err) return serverError(err, response);
-      const extension = url.split(".")[1];
-      const extensionType = {
-        html: "text/html",
-        css: "text/css",
-        js: "application/javascript",
-        jpg: "image/jpeg",
-        ico: "image/x-icon"
-      };
-      response.writeHead(200, { "Content-Type": extensionType[extension] });
-      response.end(file);
+        if (err) return serverError(err, response);
+
+        response.writeHead(200, extension[fileExt]);
+        response.end(file);
     });
-  };
+};
 
-  const errorHandler = response => {
-    response.writeHead(404, { "content-type": "text/html" });
+const errorHandler = response => {
+    response.writeHead(404, extension.html);
     response.end("<h1>404 Page Requested Cannot be Found</h1>");
-  };
+};
 
-  module.exports = {
+module.exports = {
     homeHandler,
     publicHandler,
     errorHandler,
     hostelHandler
-  };
-  
+};
