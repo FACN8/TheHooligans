@@ -2,7 +2,8 @@ const {
     homeHandler,
     publicHandler,
     errorHandler,
-    hostelHandler
+    hostelHandler,
+    reserverHostelHandler
   } = require('./handlers');
   
   const router = (request, response) => {
@@ -14,6 +15,8 @@ const {
       publicHandler(url, response);
     } else if (url.includes('search')) {
       hostelHandler(url, response);
+    }else if (url.includes('reserverHostel')) {
+      reserverHostelHandler(request, response);
     }
     else {
       errorHandler(response);
