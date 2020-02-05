@@ -82,6 +82,12 @@ input[type="date"]::-webkit-inner-spin-button {
     display: none;
 }
 
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.5;
+    color: red;
+}
+
 form input[type=date],form input[type=text] {
     color: black;
     font-size: large;
@@ -108,7 +114,7 @@ input[type=date] {
 }
 
 button {
-    width: 25%;
+    width: 15vw;
     background-color: rgba(190, 28, 55, 0.877);
     color: white;
     padding: 2vh;
@@ -118,6 +124,7 @@ button {
     font-size: large;
     font-weight: 700;
     border-radius: 26px;
+    justify-content: center;
 }
 
 button:hover {
@@ -144,3 +151,12 @@ span {
     opacity: 0.9;
     font-weight: bold;
 }
+
+
+.wrapperHostelList {
+    /* background-color: rgba(218, 38, 98, 0.39); */
+    color: rgb(107, 7, 7);
+    border-radius: 5px;
+    margin: 7px;
+}
+
