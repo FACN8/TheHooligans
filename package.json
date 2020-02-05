@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:db": "NODE_ENV=test node tests/db_tests.js",
-    "start": "node ./src/server.js"
+    "start": "node ./src/server.js",
+    "start:watch": "nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,8 @@
   },
   "homepage": "https://github.com/FACN8/TheHooligans#readme",
   "dependencies": {
-    "pg": "^7.18.1"
+    "pg": "^7.18.1",
+    "pg-format": "^1.0.4"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

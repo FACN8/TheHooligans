@@ -2,6 +2,8 @@ const form = document.querySelector("form");
 const cityName = document.querySelector("#cityInput");
 const DOA = document.querySelector("#DOAInput");
 const DOD = document.querySelector("#DODInput");
+let currHostelsID = [];
+
 function request(url, cb) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
@@ -20,18 +22,12 @@ function updateDom(err, data) {
     console.log(err);
   } else {
     var inputData = JSON.parse(data);
-    console.log(inputData);
     displayData(inputData);
-
-    cityName.value = "";
-    DOA.value = "";
-    DOD.value = "";
   }
 }
 
 function displayData(inputData) {
   const hostelsList = document.querySelector("#hostels-list");
-
   while (hostelsList.firstChild) {
     hostelsList.removeChild(hostelsList.firstChild);
   }
@@ -41,8 +37,14 @@ function displayData(inputData) {
     var newButton = document.createElement("button")
     newButton.textContent = "Reserve";
     newHeader.innerText = hostel.name;
+    currHostelsID.push(hostel.id)
+    console.log(currHostelsID);
     newHeader.className = "hostel-name";
-    newButton.className = "reserveButton";
+    newButton.className = "reserveButton ";
+    newButton.id = hostel.id;
+    newButton.addEventListener("click",(e)=>{
+      toggleButton(e)
+    })
     newLi.className = "wrapper hostel-listing";
     newLi.appendChild(newHeader);
     newLi.appendChild(newButton)
@@ -61,3 +63,17 @@ document.addEventListener("submit", e => {
   e.preventDefault();
   request(url, updateDom);
 });
+
+function toggleButton(e){
+  axios.post('/reserverHostel', {
+    hostelID: e.target.id,
+    dayOfArrival: DOA.value,
+    dayOfDeparture: DOD.value    
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
