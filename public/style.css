@@ -20,7 +20,7 @@ h1 {
 
 body {
     margin: 0;
-    background-image: url(./images/hostelworld.jpg);
+    background-image: url(./images/travel.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -72,6 +72,11 @@ form input {
     border-radius: 26px;
 }
 
+::placeholder {
+    color: black;
+    opacity: 0.5;
+}
+
 form input[type=text] {
     color: black !important;
     text-transform: uppercase;
@@ -83,7 +88,10 @@ form input[type=text] {
 }
 
 form input[type=text]:hover {
-    background-color: rgba(255, 0, 0, 0.671);
+    background-color: rgba(255, 0, 0, 0.671) !important;
+    border-radius: 50px;
+    transition: all 0.3 ease 0s;
+    border-color: rgba(95, 20, 20, 0.548) !important;
 }
 
 input[type=text] {
@@ -107,4 +115,29 @@ button {
     font-size: large;
     border-radius: 26px;
     text-align: center;
+}
+
+button:hover {
+    background: rgba(255, 0, 0, 0.671) !important;
+    border-radius: 50px;
+    border-color: rgba(95, 20, 20, 0.548) !important;
+    transition: all 0.3 ease 0s;
+}
+
+h2 {
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+}
+
+span {
+    display: block;
+    float: left;
+    background: rgba(110, 15, 15, 0.822);
+    color: black;
+    opacity: 0.9;
+    font-weight: bold;
 }
