@@ -51,12 +51,12 @@ body {
     opacity: 50%;
 }
 
-.hostel-description {
-    padding: 5px;
-}
-
 li {
     list-style-type: none;
+    background-color: rgba(218, 38, 98, 0.39);
+    color: rgb(107, 7, 7);
+    border-radius: 5px;
+    margin: 7px;
 }
 
 form {
@@ -82,8 +82,7 @@ input[type="date"]::-webkit-inner-spin-button {
     display: none;
 }
 
-form input[type=text],
-[type=date] {
+form input[type=date],form input[type=text] {
     color: black;
     font-size: large;
     background: white;
@@ -91,15 +90,15 @@ form input[type=text],
     border: 3px solid rgba(190, 28, 55, 0.877);
 }
 
-form input[type=text],
-[type=date]:hover {
+form input[type=text]:hover,
+form input[type=date]:hover {
     border-radius: 50px;
     transition: all 0.3 ease 0s;
     border-color: rgba(95, 20, 20, 0.548);
 }
 
 input[type=text],
-[type=date] {
+input[type=date] {
     width: 100%;
     padding: 4vh;
     margin: 1vw;
@@ -144,11 +143,4 @@ span {
     color: black;
     opacity: 0.9;
     font-weight: bold;
-}
-
-.wrapperHostelList{
-    background-color: rgba(218, 38, 98, 0.39);
-    color: rgb(107, 7, 7);
-    border-radius: 5px;
-    margin: 7px;
 }
