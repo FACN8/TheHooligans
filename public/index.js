@@ -83,7 +83,7 @@ function toggleButton(e){
     dayOfDeparture: DOD.value    
   })
   .then(function (response) {
-    console.log(response);
+    window.location.href = "/public/res.html"
   })
   .catch(function (error) {
     console.log(error);
