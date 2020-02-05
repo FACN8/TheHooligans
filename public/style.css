@@ -29,9 +29,32 @@ body {
 
 .main-container {
     padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.wrapper {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.hostel-name {
+    font-size: 1.5rem;
+    color: grey;
+}
+
+.hostel-listing::before {
+    padding: 10px;
+    background-color: #ccc;
+    opacity: 50%;
+}
+
+.hostel-description {
+    padding: 5px;
+}
+
+li {
+    list-style-type: none;
 }
 
 form {
