@@ -15,6 +15,9 @@ const {
     } else if (url.includes('search')) {
       hostelHandler(url, response);
     }
+    else if (url.includes('reserve')) {
+      reserveHandler(url, response);
+    }
     else {
       errorHandler(response);
     }
