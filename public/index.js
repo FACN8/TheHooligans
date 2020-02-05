@@ -31,16 +31,23 @@ function displayData(inputData) {
   while (hostelsList.firstChild) {
     hostelsList.removeChild(hostelsList.firstChild);
   }
-  console.log('Function displayData ,inputData = ',inputData);
+  var noDataLi = document.createElement("li");
+  noDataLi.className = "wrapper hostel-listing";
+  var noDataHeader = document.createElement("h2");
+  noDataHeader.className = "hostel-name";
   if(inputData === undefined || inputData.length===0){
-    var noDataLi = document.createElement("li");
-    noDataLi.className = "wrapper hostel-listing";
-    var noDataHeader = document.createElement("h2");
-    noDataHeader.className = "hostel-name";
-    noDataHeader.innerText = 'Sorry! no hostels are available, try a different date';
+    noDataHeader.textContent = 'Sorry! no hostels are available, try a different date';
     noDataLi.appendChild(noDataHeader);
     hostelsList.appendChild(noDataLi);
-  }else 
+  }else if(inputData[0]=='Invalid year'){
+    noDataHeader.textContent = 'Enter the current year.';
+    noDataLi.appendChild(noDataHeader);
+    hostelsList.appendChild(noDataLi);
+  }else if(inputData[0]=='Invalid month, enter current month'){
+    noDataHeader.textContent = 'Invalid month, enter current month';
+    noDataLi.appendChild(noDataHeader);
+    hostelsList.appendChild(noDataLi);
+  }else
   {
   inputData.forEach(hostel => {
     var newLi = document.createElement("li");
@@ -49,7 +56,6 @@ function displayData(inputData) {
     newButton.textContent = "Reserve";
     newHeader.innerText = hostel.name;
     currHostelsID.push(hostel.id)
-    console.log(currHostelsID);
     newHeader.className = "hostel-name";
     newButton.className = "reserveButton ";
     newButton.id = hostel.id;
