@@ -34,7 +34,8 @@ const homeHandler = response => {
 
 const hostelHandler = (url, response) => {
     const queries = querystring.parse(urlMod.parse(url).query);
-    dbConnection.query('SELECT * FROM hostel WHERE city_id IN (SELECT id FROM city WHERE name=$1)', [queries.city], (error, result) => {
+    let cityNameInsensitive = queries.city.substring(0, 1).toUpperCase() +queries.city.substring(1, queries.city.length).toLowerCase()
+    dbConnection.query('SELECT * FROM hostel WHERE city_id IN (SELECT id FROM city WHERE name=$1)',[cityNameInsensitive] , (error, result) => {
         if (error) {
             response.writeHead(503, extension.text);
             response.end('Server failed to load the hostels for that city. eemchem ha sleha')
