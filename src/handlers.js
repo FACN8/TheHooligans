@@ -4,6 +4,7 @@ const urlMod = require('url')
 const getData = require("./queries/getData.js");
 const dbConnection = require('./database/db_connection')
 const querystring = require('querystring')
+const pgFormat = require('pg-format')
 
 const extension = {
     html: { "Content-Type": "text/html" },
@@ -46,6 +47,23 @@ const hostelHandler = (url, response) => {
 
 };
 
+const reserverHostelHandler = (request, response) => {
+        response.writeHead(301, {"Location": "/"});
+        var allTheData = '';
+        request.on('data', function (chunkOfData) {
+            allTheData += chunkOfData;
+        });
+        request.on('end', function () {
+        allTheData = JSON.parse(allTheData);
+        let arrivalInputDat = parseInt((allTheData.dayOfArrival.split('-'))[1]);
+        let dayToString = 'day'+arrivalInputDat;
+        console.log(dayToString);
+        const sqlQuery = pgFormat('UPDATE reservation SET %I = TRUE WHERE hostel_id=$1', dayToString)
+        dbConnection.query(sqlQuery,[allTheData.hostelID]);
+        response.end();
+  });
+};
+
 
 const publicHandler = (url, response) => {
     const filepath = path.join(__dirname, "..", url);
@@ -68,5 +86,6 @@ module.exports = {
     homeHandler,
     publicHandler,
     errorHandler,
-    hostelHandler
+    hostelHandler,
+    reserverHostelHandler
 };
