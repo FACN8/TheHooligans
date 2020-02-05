@@ -36,10 +36,18 @@ const homeHandler = response => {
 const hostelHandler = (url, response) => {
     const queries = querystring.parse(urlMod.parse(url).query);
     let cityNameInsensitive = queries.city.substring(0, 1).toUpperCase() +queries.city.substring(1, queries.city.length).toLowerCase()
+    let today = new Date();
+    let curYear = today.getFullYear();
+    let curMonth = today.getMonth()+1;
+    if(parseInt(queries.arrival.split('-')[0]) !== parseInt(curYear) || parseInt(queries.departure.split('-')[0]) !== parseInt(curYear)){
+        response.end(JSON.stringify(['Invalid year']))
+    }else if(parseInt(queries.arrival.split('-')[1]) !== parseInt(curMonth) || parseInt(queries.departure.split('-')[1]) !== parseInt(curMonth)){
+        response.end(JSON.stringify(['Invalid month, enter current month']))
+
+    }
     let arrivalInputDate = parseInt((queries.arrival.split('-'))[2]);
     let departureInputDate = parseInt((queries.departure.split('-'))[2]);
     let dayToString = 'day'+arrivalInputDate;
-    console.log('arrival date:',queries.arrival.split('-'));
     let rangeQuery = `SELECT * FROM hostel 
     INNER JOIN reservation ON reservation.hostel_id = hostel.id 
     WHERE hostel.city_id IN (SELECT id FROM city WHERE name = $1)
@@ -54,7 +62,6 @@ const hostelHandler = (url, response) => {
         response.writeHead(503, extension.text);
         return response.end('Server failed to load the hostels for that city. eemchem ha sleha')
     }
-    console.log('resulttttttt ',JSON.stringify(result.rows));
     response.writeHead(200, extension.json);
     if(result===undefined || result==='' || result.length === 0){
         console.log('Result is empty, returning empty arr');
