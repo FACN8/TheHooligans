@@ -63,36 +63,36 @@ create table reservation (
 	hostel_id INT,
 	date_of_arrival VARCHAR(50)
 );
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (1, 1, 1, true);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (1, 1, 1, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (2, 2, 2, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (3, 3, 3, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (4, 4, 4, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (5, 5, 5, true);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (4, 4, 4, false);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (5, 5, 5, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (6, 6, 6, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (7, 7, 7, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (8, 8, 8, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (9, 9, 9, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (10, 10, 10, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (11, 1, 1, true);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (11, 1, 1, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (12, 2, 2, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (13, 3, 3, true);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (13, 3, 3, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (14, 4, 4, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (15, 5, 5, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (16, 6, 6, true);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (16, 6, 6, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (17, 7, 7, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (18, 8, 8, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (19, 9, 9, true);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (19, 9, 9, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (20, 10, 10, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (21, 1, 1, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (22, 2, 2, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (23, 3, 3, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (24, 4, 4, true);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (25, 5, 5, true);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (23, 3, 3, false);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (24, 4, 4, false);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (25, 5, 5, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (26, 6, 6, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (27, 7, 7, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (28, 8, 8, false);
 insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (29, 9, 9, false);
-insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (30, 10, 10, true);
+insert into reservation (id, guest_id, hostel_id, date_of_arrival) values (30, 10, 10, false);
 
 
 

@@ -38,10 +38,14 @@ function displayData(inputData) {
   inputData.forEach(hostel => {
     var newLi = document.createElement("li");
     var newHeader = document.createElement("h2");
+    var newButton = document.createElement("button")
+    newButton.textContent = "Reserve";
     newHeader.innerText = hostel.name;
     newHeader.className = "hostel-name";
+    newButton.className = "reserveButton";
     newLi.className = "wrapper hostel-listing";
     newLi.appendChild(newHeader);
+    newLi.appendChild(newButton)
     hostelsList.appendChild(newLi);
   });
 }

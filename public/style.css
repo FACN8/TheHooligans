@@ -43,7 +43,6 @@ body {
 
 .hostel-name {
     font-size: 1.5rem;
-    color: grey;
 }
 
 .hostel-listing::before {
@@ -140,4 +139,11 @@ span {
     color: black;
     opacity: 0.9;
     font-weight: bold;
+}
+
+.wrapperHostelList{
+    background-color: rgba(218, 38, 98, 0.39);
+    color: rgb(107, 7, 7);
+    border-radius: 5px;
+    margin: 7px;
 }
