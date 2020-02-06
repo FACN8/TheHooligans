@@ -42,11 +42,13 @@ const hostelHandler = (url, response) => {
     if(parseInt(queries.arrival.split('-')[0]) !== parseInt(curYear) || parseInt(queries.departure.split('-')[0]) !== parseInt(curYear)){
         response.end(JSON.stringify(['Invalid year']))
     }else if(parseInt(queries.arrival.split('-')[1]) !== parseInt(curMonth) || parseInt(queries.departure.split('-')[1]) !== parseInt(curMonth)){
-        response.end(JSON.stringify(['Invalid month, enter current month']))
-
+        response.end(JSON.stringify(['Invalid month']))
     }
     let arrivalInputDate = parseInt((queries.arrival.split('-'))[2]);
     let departureInputDate = parseInt((queries.departure.split('-'))[2]);
+    if(arrivalInputDate > departureInputDate) {
+        response.end(JSON.stringify(['Invalid day']))
+    }
     let dayToString = 'day'+arrivalInputDate;
     let rangeQuery = `SELECT * FROM hostel 
     INNER JOIN reservation ON reservation.hostel_id = hostel.id 

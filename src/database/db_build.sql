@@ -27,23 +27,25 @@ create table hostel (
 	name VARCHAR(50),
 	capacity INT,
 	contact_info VARCHAR(50),
-	city_id INT
+	city_id INT,
+	FOREIGN KEY (city_id) REFERENCES city (id)
 );
-insert into hostel (id, name, capacity, contact_info, city_id) values (1, 'Hostel by The water', 25, '(801) 4464931', 1);
-insert into hostel (id, name, capacity, contact_info, city_id) values (2, 'Susans Terrace Hostel', 55, '(192) 8523352', 2);
-insert into hostel (id, name, capacity, contact_info, city_id) values (3, 'Dotties Hostel', 61,  '(290) 1979005', 3);
-insert into hostel (id, name, capacity, contact_info, city_id) values (4, 'Stone Corner Hostel', 48, '(506) 3577146', 4);
-insert into hostel (id, name, capacity, contact_info, city_id) values (5, 'Blackbird Hostel', 42,  '(683) 2673437', 5);
-insert into hostel (id, name, capacity, contact_info, city_id) values (6, 'Lilian hostel', 73, '(286) 3496910', 6);
-insert into hostel (id, name, capacity, contact_info, city_id) values (7, 'Park Hostel', 15, '(887) 2473533', 7);
-insert into hostel (id, name, capacity, contact_info, city_id) values (8, 'Kings Hostel', 21,  '(525) 7953280', 8);
-insert into hostel (id, name, capacity, contact_info, city_id) values (9, 'Molans Hostel', 47, '(142) 1849630', 9);
-insert into hostel (id, name, capacity, contact_info, city_id) values (10, 'Alley Hostel', 54, '(478) 8858944', 10);
+insert into hostel (id, name, capacity, contact_info, city_id) values (1, 'Apartment by The water', 25, '(801) 4464931', 1);
+insert into hostel (id, name, capacity, contact_info, city_id) values (2, 'Susans Terrace Apartment', 55, '(192) 8523352', 2);
+insert into hostel (id, name, capacity, contact_info, city_id) values (3, 'Dotties Apartment', 61,  '(290) 1979005', 3);
+insert into hostel (id, name, capacity, contact_info, city_id) values (4, 'Stone Corner Apartment', 48, '(506) 3577146', 4);
+insert into hostel (id, name, capacity, contact_info, city_id) values (5, 'Blackbird Apartment', 42,  '(683) 2673437', 5);
+insert into hostel (id, name, capacity, contact_info, city_id) values (6, 'Lilian Apartment', 73, '(286) 3496910', 6);
+insert into hostel (id, name, capacity, contact_info, city_id) values (7, 'Park Apartment', 15, '(887) 2473533', 7);
+insert into hostel (id, name, capacity, contact_info, city_id) values (8, 'Kings Apartment', 21,  '(525) 7953280', 8);
+insert into hostel (id, name, capacity, contact_info, city_id) values (9, 'Molans Apartment', 47, '(142) 1849630', 9);
+insert into hostel (id, name, capacity, contact_info, city_id) values (10, 'Alley Apartment', 54, '(478) 8858944', 10);
 
 create table guest (
 	id INT,
 	name VARCHAR(50),
 	hostel_id INT,
+	FOREIGN KEY (hostel_id) REFERENCES hostel (id)
 	phoneNumber VARCHAR(50)
 );
 insert into guest (id, name, hostel_id, phoneNumber) values (1, 'Greta', 1, '+55 520 621 2109');
@@ -61,6 +63,8 @@ create table reservation (
 	id INT,
 	city_id INT,
 	hostel_id INT,
+	FOREIGN KEY (city_id) REFERENCES city (id),
+	FOREIGN KEY (hostel_id) REFERENCES hostel (id),
 	Day1 BOOLEAN,
 	Day2 BOOLEAN,
 	Day3 BOOLEAN,

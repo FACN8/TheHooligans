@@ -2,6 +2,9 @@ const form = document.querySelector("form");
 const cityName = document.querySelector("#cityInput");
 const DOA = document.querySelector("#DOAInput");
 const DOD = document.querySelector("#DODInput");
+const hostelsList = document.querySelector("#hostels-list");
+var errorMsg = '';
+
 let currHostelsID = [];
 
 function request(url, cb) {
@@ -26,35 +29,44 @@ function updateDom(err, data) {
   }
 }
 
+function checkAvailability(inputData){
+  if(inputData === undefined || inputData.length===0){
+    errorMsg = 'Sorry! no hostels are available, try a different date or a different hostel.';
+    return false;
+  }else if(inputData[0]=='Invalid year'){
+    errorMsg = 'Enter the current year.';
+    return false;
+  }else if(inputData[0]=='Invalid month'){
+    errorMsg = 'Invalid month, enter current month';
+    return false;
+  }else if(inputData[0]=='Invalid day'){
+    errorMsg = 'Invalid date, enter arrival date lower than departure date';
+    return false;
+  }
+  return true
+}
+
+
 function displayData(inputData) {
-  const hostelsList = document.querySelector("#hostels-list");
   while (hostelsList.firstChild) {
     hostelsList.removeChild(hostelsList.firstChild);
   }
-  var noDataLi = document.createElement("li");
-  noDataLi.className = "wrapper hostel-listing";
-  var noDataHeader = document.createElement("h2");
-  noDataHeader.className = "hostel-name";
-  if(inputData === undefined || inputData.length===0){
-    noDataHeader.textContent = 'Sorry! no hostels are available, try a different date';
-    noDataLi.appendChild(noDataHeader);
+  var availabilityFlag = checkAvailability(inputData)
+  //if the hostel not available or the dates are invalid
+  if(!availabilityFlag == true){
+    noDataLi = document.createElement("div");
+    noDataLi.className = "wrapper hostel-listing hostel-name";
+    noDataLi.textContent = errorMsg;
     hostelsList.appendChild(noDataLi);
-  }else if(inputData[0]=='Invalid year'){
-    noDataHeader.textContent = 'Enter the current year.';
-    noDataLi.appendChild(noDataHeader);
-    hostelsList.appendChild(noDataLi);
-  }else if(inputData[0]=='Invalid month, enter current month'){
-    noDataHeader.textContent = 'Invalid month, enter current month';
-    noDataLi.appendChild(noDataHeader);
-    hostelsList.appendChild(noDataLi);
-  }else
-  {
+    return;
+  }
+  //if the inputs are correct
   inputData.forEach(hostel => {
     var newLi = document.createElement("li");
     var newHeader = document.createElement("h2");
     var newButton = document.createElement("button")
     newButton.textContent = "Reserve";
-    newHeader.innerText = hostel.name;
+    newHeader.textContent = hostel.name;
     currHostelsID.push(hostel.id)
     newHeader.className = "hostel-name";
     newButton.className = "reserveButton ";
@@ -67,7 +79,6 @@ function displayData(inputData) {
     newLi.appendChild(newButton)
     hostelsList.appendChild(newLi);
   });
-}
 }
 
 document.addEventListener("submit", e => {
