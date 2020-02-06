@@ -106,3 +106,54 @@ function toggleButton(e){
     console.log(error);
   });
 }
+
+
+function autocomplete(inp, arr) {
+  inp.addEventListener("input", function(e) {
+    var divElement, divItem, searchValue = this.value;
+    closeAllLists();
+    if (!searchValue) {
+      return false;
+    }
+    divElement = document.createElement("DIV");
+    divElement.setAttribute("id", this.id + "autocomplete-list");
+    divElement.setAttribute("class", "autocomplete-items");
+    /*append the DIV element as a child of the autocomplete container:*/
+    this.parentNode.appendChild(divElement);
+    var counter = 0;
+    /*for each item in the array...*/
+    for (var i = 0; i < arr.length; i++) {
+      /*check if the item starts with the same letters as the text field value:*/
+      if (arr[i].substr(0, searchValue.length).toUpperCase() == searchValue.toUpperCase()) {
+        /*create a DIV element for each matching element:*/
+        if(counter <5){
+        counter++;
+        divItem = document.createElement("DIV");
+        /*make the matching letters bold:*/
+       var strong = document.createElement("STRONG")
+        var textNode1 = document.createTextNode(searchValue)
+        strong.appendChild(textNode1)
+        divItem.appendChild(strong)
+
+        var textNode2 = document.createTextNode(arr[i].substr(searchValue.length))
+        divItem.appendChild(textNode2)
+    
+        divElement.appendChild(divItem);
+        console.log( document.getElementsByClassName('wrapper')[0]);
+        document.getElementById('autocompletedList').appendChild(divElement)
+      }
+    }
+    }
+  });
+
+  function closeAllLists() {
+    var selectList = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < selectList.length; i++) {
+      selectList[i].parentNode.removeChild(selectList[i]);
+    }
+  }
+}
+
+var cities = ["Haifa","Akko","Nazareth","Tel-Aviv","Majdal-Shams","Um-el-Fahim","Hertsiliya","Ceserea","Kfar-Saba","Petah-Tikva"]
+
+autocomplete(document.getElementById("cityInput"), cities);
