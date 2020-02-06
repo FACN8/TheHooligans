@@ -35,7 +35,7 @@ function displayData(inputData) {
   noDataLi.className = "wrapper hostel-listing";
   var noDataHeader = document.createElement("h2");
   noDataHeader.className = "hostel-name";
-  if(inputData === undefined || inputData.length===0){
+  if(inputData === '' || inputData === undefined || inputData.length===0){
     noDataHeader.textContent = 'Sorry! no hostels are available, try a different date';
     noDataLi.appendChild(noDataHeader);
     hostelsList.appendChild(noDataLi);
@@ -47,7 +47,13 @@ function displayData(inputData) {
     noDataHeader.textContent = 'Invalid month, enter current month';
     noDataLi.appendChild(noDataHeader);
     hostelsList.appendChild(noDataLi);
-  }else
+  }
+  else if(inputData[0]=='Departure day must be after arrival day!'){
+    noDataHeader.textContent = 'Departure day must be after arrival day!';
+    noDataLi.appendChild(noDataHeader);
+    hostelsList.appendChild(noDataLi);
+  }
+  else
   {
   inputData.forEach(hostel => {
     var newLi = document.createElement("li");

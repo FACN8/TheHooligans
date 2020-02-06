@@ -1,11 +1,10 @@
 const { readFile } = require("fs");
 const path = require("path");
-const urlMod = require('url')
+const urlMod = require('url');
 const getData = require("./queries/getData.js");
-const dbConnection = require('./database/db_connection')
-const querystring = require('querystring')
-const pgFormat = require('pg-format')
-
+const dbConnection = require('./database/db_connection');
+const querystring = require('querystring');
+const pgFormat = require('pg-format');
 const extension = {
     html: { "Content-Type": "text/html" },
     css: { "Content-Type": "text/css" },
@@ -39,37 +38,35 @@ const hostelHandler = (url, response) => {
     let today = new Date();
     let curYear = today.getFullYear();
     let curMonth = today.getMonth()+1;
+    let arrivalInputDate = parseInt((queries.arrival.split('-'))[2]);
+    let departureInputDate = parseInt((queries.departure.split('-'))[2]);
     if(parseInt(queries.arrival.split('-')[0]) !== parseInt(curYear) || parseInt(queries.departure.split('-')[0]) !== parseInt(curYear)){
         response.end(JSON.stringify(['Invalid year']))
     }else if(parseInt(queries.arrival.split('-')[1]) !== parseInt(curMonth) || parseInt(queries.departure.split('-')[1]) !== parseInt(curMonth)){
         response.end(JSON.stringify(['Invalid month, enter current month']))
 
+    }else if(departureInputDate < arrivalInputDate){
+        response.end(JSON.stringify(['Departure day must be after arrival day!']))
+
     }
-    let arrivalInputDate = parseInt((queries.arrival.split('-'))[2]);
-    let departureInputDate = parseInt((queries.departure.split('-'))[2]);
-    let dayToString = 'day'+arrivalInputDate;
-    let rangeQuery = `SELECT * FROM hostel 
-    INNER JOIN reservation ON reservation.hostel_id = hostel.id 
-    WHERE hostel.city_id IN (SELECT id FROM city WHERE name = $1)
-    and reservation.${dayToString} = FALSE`
-    for(var i=arrivalInputDate+1; i <= departureInputDate; i++){
-        let dayToString = 'day'+i;
-        rangeQuery += ` AND reservation.${dayToString} = FALSE`
-    }
-    dbConnection.query(rangeQuery,[cityNameInsensitive], (error, result) => {
-    if (error) {
-        console.log(error)
-        response.writeHead(503, extension.text);
-        return response.end('Server failed to load the hostels for that city. eemchem ha sleha')
-    }
+    
+   
+
+
+    const rangeQuery = getData.createRangeQuery(arrivalInputDate,departureInputDate);
+    
+    getData.getAvaialbeHostels(
+    rangeQuery,
+    cityNameInsensitive,
+    (err,result) =>{
     response.writeHead(200, extension.json);
+        
     if(result===undefined || result==='' || result.length === 0){
         console.log('Result is empty, returning empty arr');
-        response.end([]);
+        response.end(JSON.stringify([]));
     }
-    response.end(JSON.stringify(result.rows));
-    })
-
+    response.end(JSON.stringify(result));
+})
 };
 //Updates the reservation table to reserver hostel according to dates
 const reserverHostelHandler = (request, response) => {
