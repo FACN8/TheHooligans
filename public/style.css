@@ -9,7 +9,6 @@ header {
     display: flex;
     justify-content: center;
     padding-top: 5vh;
-    padding-bottom: 5vh;
     margin: 0;
     color: white;
 }
@@ -23,21 +22,37 @@ h1 {
 
 body {
     margin: 0;
-    background-image: url(./images/travel.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     background-attachment: fixed;
     width: 97vw;
     height: auto;
 }
 
+body::after{
+    content: "";
+    background-image: url(./images/travel.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+  }
+
 .main-container {
-    padding: 10px;
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
-    width: 98%;
     height: auto;
+}
+
+.main-container h3{
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    font-size: xx-large;
 }
 
 .wrapper {
@@ -117,19 +132,18 @@ input[type=date] {
 }
 
 button {
-    
     background-color: rgba(190, 28, 55, 0.877);
     color: white;
-    padding: 7px;
-    margin: 5px;
+    width: 100%;
+    padding: 1vh;
+    margin: 1vw;
     border: none;
     cursor: pointer;
     font-size: large;
     font-weight: 700;
     border-radius: 26px;
-    /* justify-content: center; */
     grid-column-start: 2;
-    grid-column-end: 3;
+    grid-column-end: 4;
 }
 
 button:hover {
@@ -155,6 +169,14 @@ span {
     color: black;
     opacity: 0.9;
     font-weight: bold;
+}
+
+div .hostel-listing{
+    background-color: rgba(218, 38, 98, 0.39);
+    color: rgb(107, 7, 7);
+    padding: 2vh;
+    font-weight: 900;
+    border-radius: 5px;
 }
 
 .wrapperHostelList {
