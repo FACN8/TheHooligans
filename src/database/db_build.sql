@@ -45,7 +45,7 @@ create table guest (
 	id INT,
 	name VARCHAR(50),
 	hostel_id INT,
-	FOREIGN KEY (hostel_id) REFERENCES hostel (id)
+	FOREIGN KEY (hostel_id) REFERENCES hostel (id),
 	phoneNumber VARCHAR(50)
 );
 insert into guest (id, name, hostel_id, phoneNumber) values (1, 'Greta', 1, '+55 520 621 2109');
