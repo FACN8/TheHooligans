@@ -8,12 +8,12 @@ By: @LogicX1 , @ayasm199 , @hadeel11 , @92yo
 
 ### Topics
 * [Overview](#page_with_curl-overview)
-* [Installing locally](#-Installing-locally-)
-* [Testing](#-Testing)
-* [Our process](#-Our-process)
-* [Our struggles](#-Our-struggles)
-* [Learning outcomes](#-Learning-outcomes)
-* [Limitations and future goals](#Current-limitations-and-future-goals)
+* [Installing locally](#floppy_diskpackage-installing-locally-)
+* [Testing](#tada-testing)
+* [Our process](#construction_worker-construction---our-process)
+* [Our struggles](#hatching_chick-hatched_chick--our-struggles)
+* [Learning outcomes](#chicken-learning-outcomes)
+* [Limitations and future goals](#current-limitations-and-future-goals)
 
 ---
 
@@ -111,7 +111,7 @@ Using sql turned out to be harder than expected we had some struggle with things
 
 ---
 
-## Current limitations and future goals
+##:fast_forward:  Current limitations and future goals
 ### Limitations:
 - The app works for the current month, and for the next one we need to setup the reservation table again.
 - No real source of data about hostels and cties , its all hard coded.
