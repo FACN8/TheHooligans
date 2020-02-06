@@ -13,7 +13,7 @@ By: @LogicX1 , @ayasm199 , @hadeel11 , @92yo
 * [Our process](#construction_worker-construction---our-process)
 * [Our struggles](#hatching_chick-hatched_chick--our-struggles)
 * [Learning outcomes](#chicken-learning-outcomes)
-* [Limitations and future goals](#current-limitations-and-future-goals)
+* [Limitations and future goals](#fast_forward--current-limitations-and-future-goals)
 
 ---
 
