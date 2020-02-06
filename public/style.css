@@ -171,6 +171,10 @@ span {
     font-weight: bold;
 }
 
+#autocompletedList{
+    text-align: center;
+}
+
 div .hostel-listing{
     background-color: rgba(218, 38, 98, 0.39);
     color: rgb(107, 7, 7);
