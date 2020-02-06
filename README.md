@@ -111,7 +111,7 @@ Using sql turned out to be harder than expected we had some struggle with things
 
 ---
 
-##:fast_forward:  Current limitations and future goals
+## :fast_forward:  Current limitations and future goals
 ### Limitations:
 - The app works for the current month, and for the next one we need to setup the reservation table again.
 - No real source of data about hostels and cties , its all hard coded.
